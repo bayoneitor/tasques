@@ -17,9 +17,9 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["uname"])) {
                 if ($log == true) {
                     if (isset($_POST['remember-me'])) {
                         //Recordamos el email
-                        setcookie("email", $email, time() + 60 * 60 * 24 * 365, "/");
+                        setcookie("email", $email, time() + 60 * 60 * 24 * 365, $web);
                     } else {
-                        setcookie("email", "", time() - 1, "/");
+                        setcookie("email", "", time() - 1, $web);
                     }
                     header('Location: ?url=home&success');
                 } else {

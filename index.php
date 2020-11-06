@@ -3,6 +3,8 @@ ini_set('display_errors', 'On');
 //configuracion entrono
 define('APP', __DIR__);
 require APP . '/src/route.php';
+//Variable por si es web o local
+$web = "/";
 //sessions && cookie
 session_start();
 
