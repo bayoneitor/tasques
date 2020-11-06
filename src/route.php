@@ -30,22 +30,4 @@ function getRoute(): string
         default:
             return 'home';
     }
-    /*
-    switch ($url) {
-        case 'profile':
-            return 'profile';
-        case 'login':
-            return 'login';
-        case 'register':
-            return 'register';
-        case 'logout':
-            return 'logout';
-        case 'session':
-            return 'session';
-        case 'home':
-            return 'home';
-        default:
-            return 'home';
-    }
-    */
 }

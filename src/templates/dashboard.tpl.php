@@ -92,7 +92,7 @@ require 'config.php';
         default:
             $db = connectMysql($dsn, $dbuser, $dbpass);
             if ($db) {
-                $tasks = selectAllWithJoin($db, 'task', 'users', ['task.id', 'task.description', 'task.due_date'], 'user', 'id');
+                $tasks = selectWhereWithJoin($db, 'task', 'users', ['task.id', 'task.description', 'task.due_date'], 'user', 'id', ['task.user', $_SESSION["id"]]);
             }
         ?>
             <section style="margin: 50px auto;width:85%;">
@@ -116,6 +116,8 @@ require 'config.php';
                                 if ($key == "id") {
                                     $idTask = $value;
                                     echo "<td>$i</td>";
+                                } else if ($key == "due_date") {
+                                    echo '<td>' . substr($value, 0, -9) . '</td>';
                                 } else {
                                     echo "<td>$value</td>";
                                 }

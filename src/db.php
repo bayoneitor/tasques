@@ -121,14 +121,13 @@ function selectWhereWithJoin($db, $table1, $table2, array $fields = null, string
 
     $sql = "SELECT {$columns} FROM {$table1} INNER JOIN {$table2} ON {$inners} WHERE {$cond} ";
 
-
     $stmt = $db->prepare($sql);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $rows;
 }
 // funcion de borrar con condición
-function delete($db, $table, array $conditions = null): bool
+function delete($db, $table, array $conditions): bool
 {
     if (is_array($conditions)) {
         $cond = 'WHERE ';
@@ -140,7 +139,6 @@ function delete($db, $table, array $conditions = null): bool
         $cond = '';
     }
 
-
     $sql = "DELETE FROM {$table} {$cond}";
     try {
         $stmt = $db->prepare($sql);
@@ -151,7 +149,7 @@ function delete($db, $table, array $conditions = null): bool
     }
     return true;
 }
-// funció d'inserció de registres en taula
+// funció d'actualització de registres en una taula
 function update($db, $table, array $set, array $conditions): bool
 {
 
